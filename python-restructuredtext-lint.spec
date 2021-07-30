@@ -1,7 +1,7 @@
 %global _empty_manifest_terminate_build 0
 Name:           python-restructuredtext-lint
 Version:        1.3.2
-Release:        1
+Release:        2
 Summary:        reStructuredText linter
 License:        Unlicense
 URL:            https://github.com/twolfson/restructuredtext-lint
@@ -36,7 +36,7 @@ Provides:       python3-restructuredtext-lint-doc
 Lint reStructuredText linter files with an API or a CLI.
 
 %prep
-%autosetup -n restructuredtext_lint-1.3.2 -S git
+%autosetup -n restructuredtext_lint-1.3.2 -p1
 
 %build
 %py3_build
@@ -79,5 +79,8 @@ PYTHONPATH="$(pwd)" nosetests-3 -v
 %{_docdir}/*
 
 %changelog
+* Fri Jul 30 2021 chenyanpanHW <chenyanpan@huawei.com> - 1.3.2-2
+- DESC: delete -S git from %autosetup
+
 * Tue Jul 13 2021 OpenStack_SIG <openstack@openeuler.org> - 1.3.2-1
 - Package Spec generate
