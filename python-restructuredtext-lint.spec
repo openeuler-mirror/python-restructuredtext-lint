@@ -1,7 +1,7 @@
 %global _empty_manifest_terminate_build 0
 Name:           python-restructuredtext-lint
 Version:        1.3.2
-Release:        2
+Release:        3
 Summary:        reStructuredText linter
 License:        Unlicense
 URL:            https://github.com/twolfson/restructuredtext-lint
@@ -23,7 +23,6 @@ BuildRequires:  python3-wheel
 
 BuildRequires:  python3-docutils >= 0.11
 BuildRequires:  python3-docutils < 1.0
-BuildRequires:  python3-nose
 
 %description -n python3-restructuredtext-lint
 Lint reStructuredText linter files with an API or a CLI.
@@ -70,7 +69,7 @@ mv %{buildroot}/filelist.lst .
 mv %{buildroot}/doclist.lst .
 
 %check
-PYTHONPATH="$(pwd)" nosetests-3 -v
+PYTHONPATH="$(pwd)" %{__python3} -m unittest discover
 
 %files -n python3-restructuredtext-lint -f filelist.lst
 %dir %{python3_sitelib}/*
@@ -79,6 +78,9 @@ PYTHONPATH="$(pwd)" nosetests-3 -v
 %{_docdir}/*
 
 %changelog
+* Fri May 06 2022 YukariChiba <i@0x7f.cc> - 1.3.2-3
+- Replace deprecated nose with pytest
+
 * Fri Jul 30 2021 chenyanpanHW <chenyanpan@huawei.com> - 1.3.2-2
 - DESC: delete -S git from %autosetup
 
